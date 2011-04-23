@@ -16,7 +16,7 @@ Just insert a shortcode like `[cryptex]youraddress@example.com[/cryptex]` to you
 * Fully customizable appearance: you can configure font-family, font-size and font-color - everything looks like your theme style
 * Protects also EMail hyperlinks like `mailto:youradddress@example.com` by using key-shifting-based encryption/decryption with dynamic keys
 * Suitable for high traffic sites - automated caching of dynamic generated images+css
-
+* Native support for MooTools and jQuery is given - also all other frameworks are supported by generic code
     
 == Installation ==
 
