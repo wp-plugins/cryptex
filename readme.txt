@@ -65,3 +65,6 @@ Well..write a email to Andi Dittrich (andi.dittrich AT a3non.org)
 
 = 1.3 =
 * First public release.
+
+= 1.3.1 =
+* Bugfix: restore of font folder `cryptex/fonts` failed on upgrade
