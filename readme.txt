@@ -5,7 +5,7 @@ Requires at least: 3.0
 Tested up to: 3.1.1
 Stable tag: 1.3.1
 
-Cryptex is a hybrid system to **protect EMail addresses** on your website (from bots and spiders) by displaying addresses as images and text.
+Cryptex is a hybrid system to protect EMail addresses on your website (from bots and spiders) by displaying addresses as images and text.
 
 == Description ==
 
