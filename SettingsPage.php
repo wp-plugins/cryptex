@@ -85,13 +85,25 @@
     	In this case you have to upload the font files from your system into the cryptex-plugin-directory <strong><?php echo CRYPTEX_PLUGIN_PATH.DIRECTORY_SEPARATOR.'fonts'.DIRECTORY_SEPARATOR ?></strong>
     </p>
 
+	<!-- some util scripts !-->
+    <script type="text/javascript">
+		jQuery(document).ready(function(){
+			// restore default plugin path onclick
+			jQuery('#cryptex_restore_default_path').click(function(){
+				jQuery('#cryptex_path').attr('value', '<?php echo str_replace('"', '', json_encode(CRYPTEX_DEFAULT_FONT_PATH)) ?>');
+			}); 
+		});
+    </script>
+
+
 	<!-- font path !-->
     <table class="form-table">
         <tr valign="top">
         <th scope="row">Font path</th>
         <td>
-        <input name="cryptex-font-path" type="text" value="<?php echo get_option('cryptex-font-path', '')?>" class="regular-text" />
+        <input name="cryptex-font-path" type="text" value="<?php echo get_option('cryptex-font-path', CRYPTEX_DEFAULT_FONT_PATH)?>" class="regular-text" id="cryptex_path"/>
 		<label for="cryptex-font-path">with trailing slash!</label>
+        <input type="button" value="restore default path" id="cryptex_restore_default_path" />
         </td>
         </tr>
     </table>
