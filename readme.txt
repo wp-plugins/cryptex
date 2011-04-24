@@ -71,8 +71,9 @@ Well..write a email to Andi Dittrich (andi.dittrich AT a3non.org)
 
 = 1.3.2 =
 * Bugfix: restore of css files failed on upgrade
-* Bugfix: css file only updated after second press on "save changes"
+* Bugfix: CSS file only updated after second press on "save changes"
 * Bugfix: color parsing error - colors like 0x0000ff not parsed correctly
+* Bugfix: CSS font family failure on dynamic generated files
 * Added: button to restore default font path `\wp-content\plugins\cryptex\fonts\`
 * Added: jQuery [ColorPicker](http://www.eyecon.ro/colorpicker/) to settings page
 * Added: support for custom text in cryptex shortcode (like telephone numbers, postal addresses)
