@@ -62,7 +62,9 @@ var cryptex_action_handler = function(hash){
 if (typeof MooTools!="undefined"){
 	window.addEvent('domready', function(){
 		$$('span.cryptex').addEvent('click', function(){
-			cryptex_action_handler(this.get('rel'));
+			if (this.get('rel')){
+				cryptex_action_handler(this.get('rel'));
+			}
 		});
 	});
 };
@@ -71,7 +73,9 @@ if (typeof MooTools!="undefined"){
 if (typeof jQuery!="undefined"){
 	jQuery(document).ready(function(){
 		jQuery('span.cryptex').click(function(){
-			cryptex_action_handler(jQuery(this).attr('rel'));
+			if (jQuery(this).attr('rel')){
+				cryptex_action_handler(jQuery(this).attr('rel'));
+			}
 		});
 	});
 };
@@ -82,9 +86,11 @@ if (typeof MooTools=="undefined" && typeof jQuery=="undefined"){
 		var els = document.getElementsByTagName('span');
 		for (var i=0;i<els.length;i++){
 			if (els[i].getAttribute('class') && els[i].getAttribute('class').indexOf('cryptex') != -1){
-				rel = els[i].getAttribute('rel');
-				els[i].onclick = function(){
-					cryptex_action_handler(rel);
+				if (els[i].getAttribute('rel')){
+					rel = els[i].getAttribute('rel');
+					els[i].onclick = function(){
+						cryptex_action_handler(rel);
+					}
 				}
 			}
 		}

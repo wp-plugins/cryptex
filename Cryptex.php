@@ -18,7 +18,7 @@
 */
 
 define('CRYPTEX_INIT', true);
-define('CRYPTEX_VERSION', '1.3.1');
+define('CRYPTEX_VERSION', '1.3.2');
 define('CRYPTEX_PLUGIN_PATH', dirname(__FILE__));
 define('CRYPTEX_DEFAULT_FONT_PATH', CRYPTEX_PLUGIN_PATH.DIRECTORY_SEPARATOR.'fonts'.DIRECTORY_SEPARATOR);
 
@@ -32,9 +32,10 @@ function Cryptex_generate_js(){
 			$key .= chr(rand(48, 90));
 		}	
 		define('CRYPTEX_KEY', $key);
-	
-		echo '<script type="text/javascript" src="'.plugins_url('/cryptex/cryptex_compressed.js').'"></script>';
+
+		// js	
 		echo '<script type="text/javascript">var CRYPTEX_KEY = \''.CRYPTEX_KEY.'\';</script>';
+		echo '<script type="text/javascript" src="'.plugins_url('/cryptex/js/cryptex_compressed.js').'"></script>';
 	}
 }
 add_action('wp_print_scripts', 'Cryptex_generate_js', 100, 0);
@@ -44,7 +45,7 @@ function Cryptex_generate_css(){
 	// only include css if enabled
 	if(get_option('cryptex-embed-css', true)){ 
 		// include static css file
-		wp_register_style('cryptex-static', plugins_url('/cryptex/cryptex.css'));
+		wp_register_style('cryptex-static', plugins_url('/cryptex/css/cryptex.css'));
 		wp_enqueue_style('cryptex-static');
 		
 		// include dynamic css file
@@ -60,6 +61,10 @@ function Cryptex_display($atts=NULL, $content="", $code=""){
 	// get 2 parts
 	$parts = explode('@', $content);
 	
+	// tmp
+	$html = '';
+	
+	// email
 	if (count($parts)==2){	
 		// get image url
 		$imgURL0 = Cryptex_getImageURL($parts[0]);
@@ -76,10 +81,17 @@ function Cryptex_display($atts=NULL, $content="", $code=""){
 		$html .= get_option('cryptex-email-divider', '(at)');
 		$html .= '</span><img src="'. $imgURL1 .'" alt="hidden" />';
 		$html .= '</span>';
-		return $html;
 	}else{
-		return '*invalid email*';	
+		// other content
+		// get image url
+		$imgURL0 = Cryptex_getImageURL($content);
+
+		// generate html
+		$html .= '<span class="cryptex">';	
+		$html .= '<img src="'. $imgURL0 .'" alt="hidden" />';
+		$html .= '</span>';
 	}
+	return $html;
 }
 // add the actions
 add_shortcode('cryptex', 'Cryptex_display');
@@ -260,8 +272,8 @@ function Cryptex_update_cache(){
 	// create dynamic css style	
 	
 	// get font parameters		
-	$fontfamily = basename(get_option('cryptex-font', 'Arial'));
-	$fontcolor = dechex(hexdec(get_option('cryptex-font-color', '0x000000')));
+	$fontfamily = substr(get_option('cryptex-font', 'Arial.ttf'), 0, -4);
+	$fontcolor = str_replace('0x', '', get_option('cryptex-font-color', '0x000000'));
 	$fontsize = intval(get_option('cryptex-font-size', '12')).Cryptex_get_font_size_format();
 	
 	// generate style	
@@ -274,23 +286,28 @@ function Cryptex_update_cache(){
 	';
 	
 	// store css file
-	file_put_contents(CRYPTEX_PLUGIN_PATH.'/cache/dynamic.css', $style);
+	file_put_contents(CRYPTEX_PLUGIN_PATH.'/cache/dynamic.css', trim($style));
 }
-// well...is there no action hook for updating settings in wp ?
-if (isset($_POST) && isset($_POST['option_page']) && $_POST['option_page']=='cryptex-settings-group'){
-	Cryptex_update_cache();
-}
+// update cache on install
+add_action('activate_plugin', 'Cryptex_update_cache', 10, 0);
 
 // ADMIN PAGE
 // add menu
 function CryptexPlugin_backend() {
-	add_options_page('Cryptex - Advanced EMail Obfuscator+Protector', 'Cryptex Obfuscator', 'administrator', __FILE__, 'Cryptex_settings_page');
+	// add options page
+	$optionsPage = add_options_page('Cryptex - Advanced EMail Obfuscator+Protector', 'Cryptex Obfuscator', 'administrator', __FILE__, 'Cryptex_settings_page');
 	
-	//call register settings function
+	// add css/js to page
+	add_action('admin_print_styles-'.$optionsPage, 'cryptex_admin_css');
+	add_action('admin_print_scripts-'.$optionsPage, 'cryptex_admin_js');
+	
+	// call register settings function
 	add_action('admin_init', 'Cryptex_register_settings'); 
 }
+// WordPress Plugin Hooks
+add_action('admin_menu', 'CryptexPlugin_backend');
 
-
+// resgiter settings
 function Cryptex_register_settings() {
 	// register settings
 	register_setting('cryptex-settings-group', 'cryptex-font-path');
@@ -321,9 +338,14 @@ function Cryptex_get_font_size_format(){
 
 // options page
 function Cryptex_settings_page() {
-	// load language files
+	// well...is there no action hook for updating settings in wp ?
+	if (isset($_GET['settings-updated'])){
+		Cryptex_update_cache();
+	}
 
+	// load language files
 	//load_plugin_textdomain('cryptex', null, basename(dirname(__FILE__)).'/lang');
+	
 	// font list
 	$fonts = array();
 	
@@ -341,8 +363,19 @@ function Cryptex_settings_page() {
 	include('SettingsPage.php');
 }
 
-// WordPress Plugin Hooks
-add_action('admin_menu', 'CryptexPlugin_backend');
+/**
+	INCLUDE ADMIN JS + CSS
+*/
+function cryptex_admin_css() {
+	// colorpicker css
+	wp_register_style('jquery-colorpicker', plugins_url('/cryptex/extern/colorpicker/css/colorpicker.css'));
+	wp_enqueue_style('jquery-colorpicker');
+}
+function cryptex_admin_js() {
+	// colorpicker js
+	wp_register_script('jquery-colorpicker', plugins_url('/cryptex/extern/colorpicker/js/colorpicker.js'));
+	wp_enqueue_script('jquery-colorpicker');
+}
 
 /**
 	BACKUP/RESTORE font files on upgrade
@@ -360,7 +393,8 @@ function cryptex_update_restore(){
 	// update cache
 	Cryptex_update_cache();
 }
+
 // update/install events
-add_filter('upgrader_pre_install', 'cryptex_update_backup', 10, 0);
-add_filter('upgrader_post_install', 'cryptex_update_restore', 10, 0);
+add_action('upgrader_pre_install', 'cryptex_update_backup', 10, 0);
+add_action('upgrader_post_install', 'cryptex_update_restore', 10, 0);
 ?>

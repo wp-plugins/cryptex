@@ -2,7 +2,7 @@
 /**
 	Descriptionn: CRYPTEX Admin Settings Page
 	Plugin URI: http://www.a3non.org/go/cryptex
-	Version: 1.3
+	Version: 1.3.2
 	Author: Andi Dittrich
 	Author URI: http://www.a3non.org
 	License: MIT X11-License
@@ -27,51 +27,8 @@
 
 <!-- info !-->
 <h2>System Info</h2>
-<p>
-<?php
-	if (function_exists('gd_info')){
-		$info = gd_info();
-		echo 'GD lib installed: <strong style="color:#090">true</strong><br />';	
-		echo 'GD version: <strong style="color:#090">',  $info["GD Version"],'</strong><br />';	
-		
-		// png support
-		if ($info['PNG Support']){
-			echo 'PNG support: <strong style="color:#090">true</strong><br />';
-		}else{
-			echo 'PNG support: <strong style="color:#900">false</strong><br />';
-		}
-		
-		// font path avaible ?
-		if (is_dir(get_option('cryptex-font-path', ''))){
-			echo 'System font path: <strong style="color:#090">valid</strong><br />';
-		}else{
-			echo 'System font path: <strong style="color:#900">invalid</strong><br />';
-		}
-		
-		// fonts avaible ?
-		if (count($fonts)>0){
-			echo 'Fonts avaible: <strong style="color:#090">true</strong><br />';
-		}else{
-			echo 'Fonts avaible: <strong style="color:#900">false - fallback active</strong><br />';
-		}
+<?php include('SystemInfo.php');?>
 
-		// PHP version
-		if (version_compare(phpversion(), '5.0', '>=')){
-			echo 'PHP version: <strong style="color:#090">', phpversion() ,'</strong><br />';
-		}else{
-			echo 'PHP version: <strong style="color:#900">', phpversion() ,'</strong><br />';
-		}
-
-		// server os
-		echo 'Server OS: <strong>', PHP_OS,'</strong><br />';
-				
-		// cryptex version
-		echo 'Cryptex Plugin Version: <strong>', CRYPTEX_VERSION, '</strong><br />';
-	}else{
-		echo 'GD Lib installed: <strong style="color:#900">false</strong>';
-	}
-?>
-</p>
 
 <!-- settings !-->
 <form method="post" action="options.php">
@@ -91,7 +48,18 @@
 			// restore default plugin path onclick
 			jQuery('#cryptex_restore_default_path').click(function(){
 				jQuery('#cryptex_path').attr('value', '<?php echo str_replace('"', '', json_encode(CRYPTEX_DEFAULT_FONT_PATH)) ?>');
-			}); 
+			});
+			
+			// colorpicker
+			jQuery('#cryptex-font-color').ColorPicker({				
+				onSubmit: function(hsb, hex, rgb, el){
+					jQuery(el).val('0x'+hex);
+					jQuery(el).ColorPickerHide();
+				},
+				onBeforeShow: function(){
+					jQuery(this).ColorPickerSetColor(this.value);
+				}	
+			});
 		});
     </script>
 
@@ -150,7 +118,9 @@
 
     <!-- appearance !-->
     <h3>Appearance</h3>
-    <p>Change these settings to your current theme styles</p>
+    <p>Change these settings to your current theme styles <br />
+    <strong>Note: </strong>It's strongly recommend to use standard fonts only - otherwise it could cause problems by displaying them on clients which have not installed these fonts yet.
+    </p>
     <table class="form-table">
         <tr valign="top">
         <th scope="row">Font Family</th>
@@ -169,8 +139,8 @@
         <tr valign="top">
         <th scope="row">Font Color</th>
         <td>
-        <input name="cryptex-font-color" type="text" value="<?php echo get_option('cryptex-font-color', '0x000000')?>" class="text" />
-        <label for="cryptex-font-color">hex e.g. 0xff0102</label>
+        <input id="cryptex-font-color" name="cryptex-font-color" type="text" value="<?php echo get_option('cryptex-font-color', '0x000000')?>" class="text" />
+        <label for="cryptex-font-color">hex e.g. 0xff0102,<strong> six digits!</strong></label>
         </td>
         </tr>
         
@@ -206,5 +176,5 @@
 </form>
 
 <h2>Credits</h2>
-<p><a href="http://www.a3non.org/go/cryptex">Cryptex</a> is developed by <a href="http://www.a3non.org">Andi Dittrich</a>. It's release under the MIT X11 License.</p>
+<p><a href="http://www.a3non.org/go/cryptex">Cryptex</a> is developed by <a href="http://www.a3non.org">Andi Dittrich</a>. It's release under the MIT X11 License. Includes: <a href="http://www.eyecon.ro/colorpicker/">Colorpicker</a> by <a href="http://www.eyecon.ro">Stefan Petre</a> - MIT/GPL License</p>
 </div>
