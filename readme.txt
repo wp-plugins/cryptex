@@ -3,7 +3,7 @@ Contributors: Andi Dittrich
 Tags: email, obfuscation, protection, image, javascript, encryption, decryption, jquery, mootools, customizable, design, appearance
 Requires at least: 3.0
 Tested up to: 3.1.1
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 
 Cryptex is a hybrid system to protect EMail addresses on your website (from bots and spiders) by displaying them as images.
 
