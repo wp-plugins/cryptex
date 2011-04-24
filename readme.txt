@@ -21,15 +21,14 @@ Just insert a shortcode like `[cryptex]youraddress@example.com[/cryptex]` to you
 == Installation ==
 
 = System requirements =
-Your webserver configuration has to match the following requirements
-- PHP 5
-- GD library (v1 or v2)
-- GD PNG support
+* PHP 5
+* GD library (v1 or v2)
+* GD PNG support
 
 = Installation =
 1. Upload the complete `cryptex` folder (Wordpress Plugin) to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Go to Settings -> Cryptex Obfuscator. In th<e System Info section the first 3 items should be green (*GD Lib installed*, *GD Version*, *PNG Support*) - if not, you cannot use cryptex until you or your hosting provider install the GD library with enabled PNG support. At this time it is normal that *fonts avaible* and *system font path* are marked red.
+3. Go to Settings -> Cryptex Obfuscator. In the System Info section the first 3 items should be green (*GD Lib installed*, *GD Version*, *PNG Support*) - if not, you cannot use cryptex until you or your hosting provider install the GD library with enabled PNG support. At this time it is normal that *fonts avaible* and *system font path* are marked red.
 4. After checking your environment (GD installed) you have to set your systems font path - save these changes. if the path is invalid try another one or upload fonts into the `/wp-content/plugins/cryptex/fonts/` directory and use this as font path
 5. Now - all items should be marked green, this means cryptex is ready for use.
 6. Go to the bottom of cryptex settings page and select the *font-family*, *font-color* and *font-size* like the styles in your theme
@@ -78,3 +77,6 @@ Well..write a email to Andi Dittrich (andi.dittrich AT a3non.org)
 * Added: jQuery [ColorPicker](http://www.eyecon.ro/colorpicker/) to settings page
 * Added: support for custom text in cryptex shortcode (like telephone numbers, postal addresses)
 * Improoved: new plugin directory structure - moved js+css files
+
+= 1.3.3 =
+* Bugfix: restore of font folder `cryptex/fonts` failed on upgrade (windows servers..)
