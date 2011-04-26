@@ -147,6 +147,11 @@ function Cryptex_encrypt_email($txt){
 
 // generate image
 function Cryptex_getImageURL($txt){
+	// check for gd lib
+	if (!function_exists('gd_info')){
+		return '';	
+	}
+	
 	// url
 	$file = sha1($txt).'.png';
 	
@@ -275,6 +280,10 @@ function Cryptex_update_cache(){
 	$fontfamily = substr(get_option('cryptex-font', 'Arial.ttf'), 0, -4);
 	$fontcolor = str_replace('0x', '', get_option('cryptex-font-color', '0x000000'));
 	$fontsize = intval(get_option('cryptex-font-size', '12')).Cryptex_get_font_size_format();
+	
+	if (empty($fontfamily)){
+		$fontfamily = 'Arial';	
+	}
 	
 	// generate style	
 	$style = '
