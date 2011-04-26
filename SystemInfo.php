@@ -44,6 +44,6 @@ if (function_exists('gd_info')){
 		
 		echo '</p>';
 	}else{
-		echo '<div class="updated settings-error"><p>GD library not found on your system - you cannot use cryptex until you or your hosting provider install the GD library with enabled PNG support</p></div>';
+		echo '<div class="updated error"><p>GD library not found on your system - you cannot use cryptex until you or your hosting provider install the GD library with enabled PNG support</p></div>';
 	}
 ?>

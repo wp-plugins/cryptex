@@ -3,7 +3,7 @@
 	Plugin Name: Cryptex - EMail Obfuscator+Protector
 	Plugin URI: http://www.a3non.org/go/cryptex
 	Description: Advanced Graphical EMail Obfuscator which provides image based email address protection using wordpress shortcode and integrated encryption/decryption of addresses for hyperlinks
-	Version: 1.3.3
+	Version: 1.3.4
 	Author: Andi Dittrich
 	Author URI: http://www.a3non.org
 	License: MIT X11-License
@@ -18,7 +18,7 @@
 */
 
 define('CRYPTEX_INIT', true);
-define('CRYPTEX_VERSION', '1.3.3');
+define('CRYPTEX_VERSION', '1.3.4');
 define('CRYPTEX_PLUGIN_PATH', dirname(__FILE__));
 define('CRYPTEX_DEFAULT_FONT_PATH', CRYPTEX_PLUGIN_PATH.DIRECTORY_SEPARATOR.'fonts'.DIRECTORY_SEPARATOR);
 
@@ -288,8 +288,14 @@ function Cryptex_update_cache(){
 	// store css file
 	file_put_contents(CRYPTEX_PLUGIN_PATH.'/cache/dynamic.css', trim($style));
 }
+// update cache on activating plugin
+function Cryptex_activate_plugin($plugin){
+	if (strripos($plugin, 'cryptex')){
+		Cryptex_update_cache();	
+	}
+}
 // update cache on install
-add_action('activate_plugin', 'Cryptex_update_cache', 10, 0);
+add_action('activate_plugin', 'Cryptex_activate_plugin', 10, 1);
 
 // ADMIN PAGE
 // add menu
@@ -389,14 +395,18 @@ function cryptex_update_backup(){
 // restore files -> move player package back to plugin dir
 function cryptex_update_restore(){
 	// delete the folder first -> problem on windows systems...
-	rmdir(CRYPTEX_PLUGIN_PATH.DIRECTORY_SEPARATOR.'fonts');
+	if (is_dir(CRYPTEX_PLUGIN_PATH.DIRECTORY_SEPARATOR.'fonts')){
+		rmdir(CRYPTEX_PLUGIN_PATH.DIRECTORY_SEPARATOR.'fonts');
+	}
+
+	// move folder back
 	rename(dirname(CRYPTEX_PLUGIN_PATH).DIRECTORY_SEPARATOR.'_cryptex_font_backup', CRYPTEX_PLUGIN_PATH.DIRECTORY_SEPARATOR.'fonts');
 	
 	// update cache
 	Cryptex_update_cache();
 }
 
-// update/install events
+// update/install events - well they are called on upgrading ANY plugin..but at this moment there is no better way..
 add_action('upgrader_pre_install', 'cryptex_update_backup', 10, 0);
 add_action('upgrader_post_install', 'cryptex_update_restore', 10, 0);
 ?>

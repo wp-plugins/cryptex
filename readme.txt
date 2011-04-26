@@ -80,3 +80,7 @@ Well..write a email to Andi Dittrich (andi.dittrich AT a3non.org)
 
 = 1.3.3 =
 * Bugfix: restore of font folder `cryptex/fonts` failed on upgrade (windows servers..)
+
+= 1.3.4 =
+* Bugfix: by some misunderstanding of the WordPress API the update/upgrade/installation of **any plugins** triggered the restore/backup events of cryptex - this may be cause a "permission denied" error message during the installation of **any** plugin. *I apologize for this inconvenience*
+* Improoved: dynamic CSS file is automatically generated on activating the plugin
