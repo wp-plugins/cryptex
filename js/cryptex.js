@@ -2,7 +2,7 @@
 	Plugin Name: CRYPTEX
 	Plugin URI: http://www.a3non.org/go/cryptex
 	Description: EMAIL OBFUSCATOR
-	Version: 1.3
+	Version: 1.4
 	Author: Andi Dittrich
 	Author URI: http://www.a3non.org
 	Copryright 2010-2011, Andi Dittrich
@@ -87,9 +87,8 @@ if (typeof MooTools=="undefined" && typeof jQuery=="undefined"){
 		for (var i=0;i<els.length;i++){
 			if (els[i].getAttribute('class') && els[i].getAttribute('class').indexOf('cryptex') != -1){
 				if (els[i].getAttribute('rel')){
-					rel = els[i].getAttribute('rel');
 					els[i].onclick = function(){
-						cryptex_action_handler(rel);
+						cryptex_action_handler(this.getAttribute('rel'));
 					}
 				}
 			}
