@@ -2,10 +2,10 @@
 Contributors: Andi Dittrich
 Tags: email, obfuscation, protection, image, javascript, encryption, decryption, jquery, mootools, customizable, design, appearance, security, telephone, numbers, addresses
 Requires at least: 3.0
-Tested up to: 3.1.1
-Stable tag: 1.3.4
+Tested up to: 3.2.1
+Stable tag: 1.3.5
 
-Cryptex is a hybrid system to protect EMail addresses on your website (from bots and spiders) by displaying them as images.
+Cryptex protects EMail addresses on your website by displaying them as an (hybrid) images.
 
 == Description ==
 
@@ -51,7 +51,7 @@ The directory `/wp-content/plugins/cryptex/cache/` must be writeable - the image
 
 = I miss some features / I found a bug =
 
-Well..write a email to Andi Dittrich (andi.dittrich AT a3non.org)
+Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org)
 
 == Screenshots ==
 
@@ -85,3 +85,6 @@ Well..write a email to Andi Dittrich (andi.dittrich AT a3non.org)
 * Bugfix: by some misunderstanding of the WordPress API the update/upgrade/installation of **any plugins** triggered the restore/backup events of cryptex - this may be cause a "permission denied" error message during the installation of **any** plugin. *I apologize for this inconvenience*
 * Improoved: dynamic CSS file is automatically generated on activating the plugin
 * Improoved: suppress error messages if there is no GD-library
+
+= 1.3.5 =
+* Bugfix: (websites without JQuery or MooTools) using Cryptex on more than one e-mail address per page failed: when any of the e-mail addresses are clicked, the address from the last address gets applied to all of the links. (Thanks to Kory S.)

@@ -3,7 +3,7 @@
 	Plugin Name: Cryptex - EMail Obfuscator+Protector
 	Plugin URI: http://www.a3non.org/go/cryptex
 	Description: Advanced Graphical EMail Obfuscator which provides image based email address protection using wordpress shortcode and integrated encryption/decryption of addresses for hyperlinks
-	Version: 1.3.4
+	Version: 1.3.5
 	Author: Andi Dittrich
 	Author URI: http://www.a3non.org
 	License: MIT X11-License
@@ -18,7 +18,7 @@
 */
 
 define('CRYPTEX_INIT', true);
-define('CRYPTEX_VERSION', '1.3.4');
+define('CRYPTEX_VERSION', '1.3.5');
 define('CRYPTEX_PLUGIN_PATH', dirname(__FILE__));
 define('CRYPTEX_DEFAULT_FONT_PATH', CRYPTEX_PLUGIN_PATH.DIRECTORY_SEPARATOR.'fonts'.DIRECTORY_SEPARATOR);
 

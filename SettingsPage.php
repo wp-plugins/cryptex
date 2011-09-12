@@ -2,7 +2,7 @@
 /**
 	Descriptionn: CRYPTEX Admin Settings Page
 	Plugin URI: http://www.a3non.org/go/cryptex
-	Version: 1.3.2
+	Version: 1.3.5
 	Author: Andi Dittrich
 	Author URI: http://www.a3non.org
 	License: MIT X11-License
