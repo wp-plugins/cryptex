@@ -71,7 +71,7 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org)
 * Complete rewritten version of the plugin. Completly cleaned, strict OOP coding style
 * Bugfix: removed cryptex js+css from wordpress admin pages
 * Bugfix: pointer cursor is only visible on active hyperlinks
-* Improoved: you can add css prefixes to fix problems with some themes without editing yout theme
+* Improoved: you can add css prefixes to fix problems with some themes without editing your theme css
 * Improoved: only 1 css file is added instead of 2 files like before 
 * Improoved: new plugin directory structure
 * Added: I18n (internationalization) is supported
