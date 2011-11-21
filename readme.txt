@@ -3,7 +3,7 @@ Contributors: Andi Dittrich
 Tags: email, obfuscation, protection, image, javascript, encryption, decryption, jquery, mootools, customizable, design, appearance, security, telephone, numbers, addresses
 Requires at least: 3.0
 Tested up to: 3.2.1
-Stable tag: 1.3.5
+Stable tag: 2.0
 
 Cryptex protects EMail addresses on your website by displaying them as an (hybrid) images.
 
