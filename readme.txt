@@ -9,7 +9,7 @@ Cryptex protects EMail addresses on your website by displaying them as an (hybri
 
 == Description ==
 
-The Cryptex plugin for WordPress is used to display email addresses - that are normally expressed in plain text - as an hybrid image automatically. Hybrid means, that the generated addresses, which are displayed on your website, consists of images and text simultanous - simple bots/spiders using image recognition (OCR) of single generated images of addresses have no chance - they have to capture and analyze a screenshot of the whole website to grab the addresses, but this is to performance-heavy and your email addresses are protected ;) It works with telephone numbers, postal addresses also.
+The Cryptex plugin for WordPress is used to display email addresses - that are normally expressed in plain text - as an (hybrid) image automatically. Hybrid means, that the generated addresses, which are displayed on your website, consists of images and text simultanous - simple bots/spiders using image recognition (OCR) of single generated images of addresses have no chance - they have to capture and analyze a screenshot of the whole website to grab the addresses, but this is to performance-heavy and your email addresses are protected ;) It works with telephone numbers, postal addresses also.
 Just insert a shortcode like `[cryptex]youraddress@example.com[/cryptex]` to your post - that's it.
 
 = Plugin Features =
@@ -49,8 +49,13 @@ During security restrictions this pathes, depending on your hosting environment,
 
 The directory `/wp-content/plugins/cryptex/cache/` must be writeable - the images will be stored there
 
-= I miss some features / I found a bug =
+= I wanna have bold/italic font styles =
+Please use the italic/bold font of your font family you selected. For example there is an verdana.ttf(normal) and verdanai.ttf(italic) file!
 
+= Is it possible to use Cryptex directly in my wordpress template ? shortcode does not work yet =
+Of course! you can simply use `<?php Cryptex::crypt('yourtext'); ?>` to display 'yourtext' as crypted version
+
+= I miss some features / I found a bug =
 Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org)
 
 == Screenshots ==
@@ -62,11 +67,27 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org)
 
 == Changelog ==
 
-= 1.3 =
-* First public release.
+= 2.0 =
+* Complete rewritten version of the plugin. Completly cleaned, strict OOP coding style
+* Bugfix: removed cryptex js+css from wordpress admin pages
+* Bugfix: pointer cursor is only visible on active hyperlinks
+* Improoved: you can add css prefixes to fix problems with some themes without editing yout theme
+* Improoved: only 1 css file is added instead of 2 files like before 
+* Improoved: new plugin directory structure
+* Added: I18n (internationalization) is supported
+* Added: you can select the method cryptex uses to display email addresses (single image, hybrid image)
+* Added: if you wanna use cryptex directly in your wordpress template, you can simply use `Cryptex::crypt('yourtext');` to display 'yourtext' as crypted version
 
-= 1.3.1 =
-* Bugfix: restore of font folder `cryptex/fonts` failed on upgrade
+= 1.3.5 =
+* Bugfix: (websites without JQuery or MooTools) using Cryptex on more than one e-mail address per page failed: when any of the e-mail addresses are clicked, the address from the last address gets applied to all of the links. (Thanks to Kory S.)
+
+= 1.3.4 =
+* Bugfix: by some misunderstanding of the WordPress API the update/upgrade/installation of **any plugins** triggered the restore/backup events of cryptex - this may be cause a "permission denied" error message during the installation of **any** plugin. *I apologize for this inconvenience*
+* Improoved: dynamic CSS file is automatically generated on activating the plugin
+* Improoved: suppress error messages if there is no GD-library
+
+= 1.3.3 =
+* Bugfix: restore of font folder `cryptex/fonts` failed on upgrade (windows servers..)
 
 = 1.3.2 =
 * Bugfix: restore of css files failed on upgrade
@@ -78,13 +99,8 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org)
 * Added: support for custom text in cryptex shortcode (like telephone numbers, postal addresses)
 * Improoved: new plugin directory structure - moved js+css files
 
-= 1.3.3 =
-* Bugfix: restore of font folder `cryptex/fonts` failed on upgrade (windows servers..)
+= 1.3.1 =
+* Bugfix: restore of font folder `cryptex/fonts` failed on upgrade
 
-= 1.3.4 =
-* Bugfix: by some misunderstanding of the WordPress API the update/upgrade/installation of **any plugins** triggered the restore/backup events of cryptex - this may be cause a "permission denied" error message during the installation of **any** plugin. *I apologize for this inconvenience*
-* Improoved: dynamic CSS file is automatically generated on activating the plugin
-* Improoved: suppress error messages if there is no GD-library
-
-= 1.3.5 =
-* Bugfix: (websites without JQuery or MooTools) using Cryptex on more than one e-mail address per page failed: when any of the e-mail addresses are clicked, the address from the last address gets applied to all of the links. (Thanks to Kory S.)
+= 1.3 =
+* First public release.

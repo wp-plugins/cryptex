@@ -1,11 +1,10 @@
 <?php
 /**
-	Plugin Name: Cryptex - EMail Obfuscator+Protector
-	Plugin URI: http://www.a3non.org/go/cryptex
-	Description: Advanced Graphical EMail Obfuscator which provides image based email address protection using wordpress shortcode and integrated encryption/decryption of addresses for hyperlinks
-	Version: 2.0
+	Capures PHP output - usefull for templates..
+	Version: 1.0
 	Author: Andi Dittrich
 	Author URI: http://andidittrich.de
+	Plugin URI: http://www.a3non.org/go/cryptex
 	License: MIT X11-License
 	
 	Copyright (c) 2010-2012, Andi Dittrich
@@ -16,25 +15,29 @@
 	
 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+if (!defined('CRYPTEX_INIT')) die('DIRECT ACCESS PROHIBITED');
 
-/*
-*	BOOTSTRAP FILE
-*/
 
-define('CRYPTEX_INIT', true);
-define('CRYPTEX_VERSION', '2.0');
-define('CRYPTEX_PLUGIN_PATH', dirname(__FILE__));
-define('CRYPTEX_DEFAULT_FONT_PATH', CRYPTEX_PLUGIN_PATH.DIRECTORY_SEPARATOR.'fonts'.DIRECTORY_SEPARATOR);
+class Cryptex_PHPCapture{
 
-// load classes
-require_once(CRYPTEX_PLUGIN_PATH.'/class/Cryptex.php');	
-require_once(CRYPTEX_PLUGIN_PATH.'/class/KeyShiftingEncoder.php');
-require_once(CRYPTEX_PLUGIN_PATH.'/class/ImageGenerator.php');
-require_once(CRYPTEX_PLUGIN_PATH.'/class/SimpleTemplate.php');
-require_once(CRYPTEX_PLUGIN_PATH.'/class/PHPCapture.php');
-require_once(CRYPTEX_PLUGIN_PATH.'/class/Updater.php');	
-
-// run cryptex
-Cryptex::run();
-
-?>
+	public static function capture($filename, $vars=array()){
+		// extract local vars - dirty but it's wordpress....
+		extract($vars);
+		
+		// start capture
+		ob_start();
+		
+		// include file
+		include($filename);
+		
+		// get cpature content
+		$content = ob_get_contents();
+		
+		// stop capture
+		ob_end_clean();
+		
+		// return result
+		return $content;	
+	}
+	
+}
