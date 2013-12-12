@@ -12,9 +12,6 @@ Cryptex protects E-Mail-Addresses on your website by displaying them as an image
 The Cryptex plugin for WordPress is used to display email addresses - that are normally expressed in plain text - as an (hybrid) image automatically. Hybrid means, that the generated addresses consists of images and text simultanous - spambots/spiders using image recognition (OCR) of single generated images have no chance - they have to capture and analyze a screenshot of the whole website to grab the addresses, but this is to performance-heavy and your email addresses are protected ;) It works with telephone numbers, postal addresses also.
 Just insert a shortcode like `[cryptex]youraddress@example.com[/cryptex]` to your post - that's it.
 
-= Important Notice when upgrading to 2.0 =
-Some caching funtions changed - after upgrading you have to *goto the cryptex settings page and click "save changes"* to trigger an cache update!
-
 = Plugin Features =
 * Fully customizable appearance: you can configure font-family, font-size and font-color - everything looks like your theme style
 * Protects also E-Mail hyperlinks by using javascript based key-shifting encryption/decryption with dynamic keys - but you can use images only
