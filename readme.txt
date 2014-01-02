@@ -3,7 +3,7 @@ Contributors: Andi Dittrich
 Tags: email, e-mail, privacy, robots, grabbing, spam, spambots, obfuscation, protection, image, javascript, encryption, decryption, jquery, mootools, customizable, design, appearance, security, telephone, numbers, addresses
 Requires at least: 3.5
 Tested up to: 3.8
-Stable tag: 3.0
+Stable tag: 3.1
  
 Cryptex protects E-Mail-Addresses on your website by displaying them as an image
 
@@ -39,10 +39,14 @@ Most of your custom **cryptex plugin settings** get lost on upgrading to the 3.x
 5. Now - all items should be marked green, this means Cryptex is ready for use.
 6. Go to the bottom of cryptex settings page and select the *font-family*, *font-color* and *font-size* like the styles in your theme
 7. You can also use your own/special fonts uploading them into the `/wp-content/plugins/cryptex/fonts/` directory and use this as font-source
-8. That's it! You're done. You can now enter the following code into a post or page to protect email addresses: [cryptex]youraddress@example.com[/cryptex]
+8. That's it! You're done. You can now enter the following code into a post or page to protect email addresses: [email]youraddress@example.com[/email]
 
 == Frequently Asked Questions ==
 
+= Should I use the E-Mail-Address detection instead of shortcode ? =
+
+
+´
 = I get an error using the system font paths, which are shown by the settings page =
 
 This pathes - depending on your hosting environment - can be different - if you don't know the path, please ask your hosting provider or upload the fonts manually into the cryptex-plugin-directory `\wp-content\plugins\cryptex\fonts\` and use **Plugin Directory** as font source.
@@ -74,6 +78,16 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org) or or 
 6. Settings Page - CDN & Advanced Options
 
 == Changelog ==
+
+= 3.1 =
+* Added: E-Mail-Address autodetection - transforms E-Mail-Addresses from post/pages directly into images without the need of shortcodes (**optionally** - you can turn it off on the settings page)
+* Added: I18n generation tools, including ANT build script
+* Added: German translation (de_DE)
+* Added: I18n can be disbaled
+* Added: Environment Pre-Check (PHP 5.3 requirement!)
+* Improved UI
+* Bugfix: Added missing I18n domains
+* Bugfix: Misspelled variable within image-hash generation (caused php error)
 
 = 3.0 =
 * New plugin backend structure
