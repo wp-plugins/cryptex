@@ -31,10 +31,10 @@ The @-sign as well as dot's within the e-mail-addresses can be automatically rep
 
 = Security Modes =
 Cryptex provides various obfuscation modes for E-Mail-Addresses:
-1. Plain Text - only text-transformations are applied - no use of images
-2. Single Image - the e-mail-address is expressed as a single image 
-3. Multipart Image - the e-mail-address is splitted into two images, seperated by the @-sign in plain text
-4. Advanced Multipart Image - the craziest one: each part (divided by dot's and @ sign) is displayed as a seperate image, the dividers as plain text
+* Plain Text - only text-transformations are applied - no use of images
+* Single Image - the e-mail-address is expressed as a single image 
+* Multipart Image - the e-mail-address is splitted into two images, seperated by the @-sign in plain text
+* Advanced Multipart Image - the craziest one: each part (divided by dot's and @ sign) is displayed as a seperate image, the dividers as plain text
 
 
 = UPGRADE NOTICE to 3.x =
