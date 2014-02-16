@@ -3,7 +3,7 @@ Contributors: Andi Dittrich
 Tags: email, e-mail, privacy, robots, grabbing, spam, spambots, obfuscation, protection, image, javascript, encryption, decryption, jquery, mootools, customizable, design, appearance, security, telephone, numbers, addresses, filter, automatically
 Requires at least: 3.5
 Tested up to: 3.8.1
-Stable tag: 3.2
+Stable tag: 3.2.1
  
 Cryptex transforms plain-text E-Mail-Addresses into Images - automatically
 
@@ -93,6 +93,9 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org) or or 
 
 == Changelog ==
 
+= 3.2.1 =
+* Bugfix: CSS files doesn't get generated on upgrading the plugin - you have to click "save settings" to force the creation on previuos versions 
+
 = 3.2 =
 * Added: Autodetection filters for `get_the_excerpt`, `get_comment_text` and `get_comment_excerpt`
 * Added: New Security-Mode "Advanced Multipart Image" - each part of the email-address (seperated by dot's and @ sign) is displayed as an image, the dividers as plain text
@@ -168,3 +171,8 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org) or or 
 
 = 1.3 =
 * First public release.
+
+== Upgrade Notice ==
+
+= 3.2.1 =
+After upgrading, go to the Cryptex settings page and click "Apply Settings" to force an update of the generated CSS files!
