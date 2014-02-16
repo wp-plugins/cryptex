@@ -31,6 +31,7 @@ The @-sign as well as dot's within the e-mail-addresses can be automatically rep
 
 = Security Modes =
 Cryptex provides various obfuscation modes for E-Mail-Addresses:
+
 * Plain Text - only text-transformations are applied - no use of images
 * Single Image - the e-mail-address is expressed as a single image 
 * Multipart Image - the e-mail-address is splitted into two images, seperated by the @-sign in plain text
@@ -95,7 +96,7 @@ Well..write a email to Andi Dittrich (andi DOT dittrich AT a3non DOT org) or or 
 = 3.2 =
 * Added: Autodetection filters for `get_the_excerpt`, `get_comment_text` and `get_comment_excerpt`
 * Added: New Security-Mode "Advanced Multipart Image" - each part of the email-address (seperated by dot's and @ sign) is displayed as an image, the dividers as plain text
-* Added: New Security-Mode "Test" - not recommended but usefull if you don't want to use images (e.g. screenreaders required) - this setting will only modify the @sign of the text and adds mailto
+* Added: New Security-Mode "Text" - not recommended but usefull if you don't want to use images (e.g. screenreaders required) - this setting will only modify the @sign of the text and adds mailto
 * Added: Option to enable/disable `the_excerpt`, `the_content`, `get_comment_text` and `get_comment_excerpt` autodetect filters
 * Added: Text-Replacement for the **dot (.)** within E-Mail-Addresses
 * Improved: Increased the robustness of the Font-Manager (font detection)
