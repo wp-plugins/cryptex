@@ -4,7 +4,7 @@ Tags: email, e-mail, privacy, robots, grabbing, spam, spambots, obfuscation, pro
 Requires at least: 3.5
 Tested up to: 3.9
 Stable tag: 3.3
- 
+
 Cryptex transforms plain-text E-Mail-Addresses into Images - automatically
 
 == Description ==
