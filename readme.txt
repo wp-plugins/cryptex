@@ -1,11 +1,11 @@
 === Cryptex | E-Mail Address Protection ===
 Contributors: Andi Dittrich
-Tags: email, e-mail, privacy, robots, grabbing, spam, spambots, obfuscation, protection, image, javascript, encryption, decryption, jquery, mootools, customizable, design, appearance, security, telephone, numbers, addresses, filter, automatically
+Tags: email, e-mail, address, privacy, robots, grabbing, spam, spambots, scrapers, harvesters, obfuscation, protection, image, javascript, encryption, decryption, jquery, mootools, customizable, design, appearance, security, telephone, numbers, addresses, filter, automatically
 Requires at least: 3.5
 Tested up to: 4.0
 Stable tag: 3.3
 
-Cryptex transforms plain-text E-Mail-Addresses into Images - automatically
+Cryptex transforms plain-text E-Mail-Addresses into Images - automatically! No scrapers. No harvesters. No spambots.
 
 == Description ==
 
