@@ -2,7 +2,7 @@
 Contributors: Andi Dittrich
 Tags: email, e-mail, privacy, robots, grabbing, spam, spambots, retina, highdpi, responsive, obfuscation, protection, image, javascript, encryption, decryption, jquery, mootools, customizable, design, appearance, security, telephone, numbers, addresses, filter, automatically
 Requires at least: 3.8
-Tested up to: 4.0
+Tested up to: 4.2
 Stable tag: 4.0
 
 Cryptex transforms plain-text E-Mail-Addresses into Images - automatically! No scrapers. No harvesters. No spambots.
