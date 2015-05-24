@@ -111,6 +111,8 @@ After upgrading, go to the Cryptex settings page, check all options and click "A
 == Changelog ==
 
 = 5.0 =
+**Upgrade Notification**: a new Javascript decoder is used - this should not have any influence on standard installations but it will **break custom cryptex plugin changes**! Please test it before upgrading.
+
 * Added: New Javascript decryption engine (size optimized - 827bytes)
 * Added: Support for [Enlighter Syntax Highlighter](https://wordpress.org/plugins/enlighter/) to display E-Mail Addresses within highlighted content (requires Enlighter v2.7)
 * Added: Invisible placeholders around the html output (required for [Enlighter](https://wordpress.org/plugins/enlighter/))
