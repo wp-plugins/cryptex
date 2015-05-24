@@ -3,7 +3,7 @@ Contributors: Andi Dittrich
 Tags: email, e-mail, privacy, robots, grabbing, spam, spambots, retina, highdpi, responsive, obfuscation, protection, image, javascript, encryption, decryption, jquery, mootools, customizable, design, appearance, security, telephone, numbers, addresses, filter, automatically
 Requires at least: 3.8
 Tested up to: 4.2
-Stable tag: 4.0
+Stable tag: 5.0
 License: MIT X11-License
 License URI: http://opensource.org/licenses/MIT
 
@@ -119,12 +119,15 @@ After upgrading, go to the Cryptex settings page, check all options and click "A
 * Added: Additional HDPI Image renderer based on the [HTML5 srcset attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)
 * Added: Settings page link to the plugin page (metadata row)
 * Added: Link to author's Twitter Channel (latest Enlighter updates/news)
+* Added: Option to set the CSS Font-Family (in case you want to use another font for Email addresses on your page)
 * Changed HTML output attribute ordering
 * Removed: MooTools + jQuery code - replaced by native version
 * Removed `js-type` option - Cryptex javascript is now **always** injected into the page (`wp_footer` action)
 * Removed external CSS option - the required CSS is now **always** injected into the page (`wp_head` action)
 * Bugfix: HDPI CSS container is now only added when cryptex images are found on the page
 * Bugfix: The contextual help link was not "full" selectable (covered by the tab nav)
+* Bugfix: Error handling of the FontManager failed (should never happen under normal conditions)
+* Bugfix: ObjectCache file existent check failed
 * The `readme.txt` (WordPress plugin repository) is generated from the markdown file `README.md` and `CHANGES.md` (GitHub style)
 
 = 4.0 =
